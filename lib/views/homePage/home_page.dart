@@ -14,7 +14,7 @@ class _HomePageState extends State<HomePage> {
 
   String _dropdownValue = "alimentos/bebidas";
   final TextEditingController _controllerNaming = TextEditingController();
-  MaterialStateProperty<Color> _colorButton = MaterialStateProperty.all<Color>(const Color.fromRGBO(128, 128, 128, .7));
+  MaterialStateProperty<Color> _colorButton = MaterialStateProperty.all<Color>(const Color.fromRGBO(128, 128, 128, 1));
   Color _colorText = Colors.white;
 
   @override
@@ -96,7 +96,7 @@ class _HomePageState extends State<HomePage> {
                       onChanged: (value){
                         setState(() {
                           if(_controllerNaming.text.isEmpty){
-                            _colorButton = MaterialStateProperty.all<Color>(Color.fromRGBO(128, 128, 128, .7));
+                            _colorButton = MaterialStateProperty.all<Color>(Color.fromRGBO(128, 128, 128, 1));
                             _colorText = Colors.white;
                           }else{
                             _colorButton = MaterialStateProperty.all<Color>(Colors.white);
@@ -119,7 +119,7 @@ class _HomePageState extends State<HomePage> {
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                         ),
-                        dropdownColor: Color.fromRGBO(128, 128, 128, .7),
+                        dropdownColor: Color.fromRGBO(128, 128, 128, 1),
                         iconDisabledColor: Colors.white,
                         iconEnabledColor: Colors.white,
                         items: <String>['alimentos/bebidas', 'automotivo', 'bens de consumo', 'energia/combustível', 'entretenimento', 'financeiro', 'logistica', 'serviços', 'tecnologia', 'varejo']
@@ -186,7 +186,7 @@ class _HomePageState extends State<HomePage> {
                                   );
                                 } else{
                                   final snackBar = SnackBar(
-                                    backgroundColor: Color.fromRGBO(128, 128, 128, .7),
+                                    backgroundColor: Color.fromRGBO(128, 128, 128, 1),
                                     content: const Text(
                                       '!nsira os dados antes de prosseguir',
                                       style: TextStyle(

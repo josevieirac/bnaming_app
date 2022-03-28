@@ -64,7 +64,7 @@ class _EvaluationPageState extends State<EvaluationPage> {
                     style: const TextStyle(
                       fontSize: 25,
                       fontWeight: FontWeight.bold,
-                      color: Color.fromRGBO(128, 128, 128, .7),
+                      color: Color.fromRGBO(128, 128, 128, 1),
                     ),
                   ),
                 ),
@@ -84,7 +84,7 @@ class _EvaluationPageState extends State<EvaluationPage> {
             ),
           ),
 
-          Divider(color: const Color.fromRGBO(128, 128, 128, .7),),
+          Divider(color: const Color.fromRGBO(128, 128, 128, 1),),
 
         ],
       ),
@@ -162,7 +162,7 @@ class _EvaluationPageState extends State<EvaluationPage> {
                           child: Text(
                             _dados["segment"],
                             style: const TextStyle(
-                              color: Color.fromRGBO(128, 128, 128, .7),
+                              color: Color.fromRGBO(128, 128, 128, 1),
                               fontSize: 14,
                               fontWeight: FontWeight.bold,
                             ),
@@ -172,7 +172,7 @@ class _EvaluationPageState extends State<EvaluationPage> {
                         const SizedBox(height: 10,),
 
                         const Divider(
-                          color: Color.fromRGBO(128, 128, 128, .7),
+                          color: Color.fromRGBO(128, 128, 128, 1),
                         ),
                       ],
                     ),
@@ -184,7 +184,7 @@ class _EvaluationPageState extends State<EvaluationPage> {
                       behavior: const ScrollBehavior(),
                       child: GlowingOverscrollIndicator(
                         axisDirection: AxisDirection.down,
-                        color: const Color.fromRGBO(128, 128, 128, .7),
+                        color: const Color.fromRGBO(128, 128, 128, 1),
                         child: ListView(
                           children: [
 
