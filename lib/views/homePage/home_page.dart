@@ -51,8 +51,8 @@ class _HomePageState extends State<HomePage> {
                 alignment: Alignment.centerLeft,
                 //color: Color.fromRGBO(100, 100, 100, 1), //Remover
                 //height: 200,
-                padding: EdgeInsets.fromLTRB(25, 50, 20, 40),
-                child: Text(
+                padding: const EdgeInsets.fromLTRB(25, 50, 20, 40),
+                child: const Text(
                   "Vamos avaliar o nome da sua marca?",
                   style: TextStyle(
                     fontSize: 40,
@@ -66,7 +66,7 @@ class _HomePageState extends State<HomePage> {
               Container(
                 alignment: Alignment.center,
                 //color: Colors.blue, //Remover
-                padding: EdgeInsets.fromLTRB(30, 30, 30, 30),
+                padding: const EdgeInsets.fromLTRB(30, 30, 30, 30),
                 child: Column(
                   children: [
 
@@ -74,13 +74,13 @@ class _HomePageState extends State<HomePage> {
                     TextFormField(
                       controller: _controllerNaming,
                       keyboardType: TextInputType.name,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 22,
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
                       ),
-                      decoration: InputDecoration(
-                          labelText: "Digite o noma a ser avaliado",
+                      decoration: const InputDecoration(
+                          labelText: "Digite o nome a ser avaliado",
                           labelStyle: TextStyle(
                             color: Colors.white,
                             fontSize: 15,
@@ -96,30 +96,30 @@ class _HomePageState extends State<HomePage> {
                       onChanged: (value){
                         setState(() {
                           if(_controllerNaming.text.isEmpty){
-                            _colorButton = MaterialStateProperty.all<Color>(Color.fromRGBO(128, 128, 128, 1));
+                            _colorButton = MaterialStateProperty.all<Color>(const Color.fromRGBO(128, 128, 128, 1));
                             _colorText = Colors.white;
                           }else{
                             _colorButton = MaterialStateProperty.all<Color>(Colors.white);
-                            _colorText = Color.fromRGBO(240, 125, 54, 1.0);
+                            _colorText = const Color.fromRGBO(240, 125, 54, 1.0);
                           }
                         });
                       },
                     ),
 
                     //Espaçamento
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
 
                     //Campo para Selecionar o segmento da marca
                     DropdownButtonFormField(
                         value: _dropdownValue,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 22,
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                         ),
-                        dropdownColor: Color.fromRGBO(128, 128, 128, 1),
+                        dropdownColor: const Color.fromRGBO(128, 128, 128, 1),
                         iconDisabledColor: Colors.white,
                         iconEnabledColor: Colors.white,
                         items: <String>['alimentos/bebidas', 'automotivo', 'bens de consumo', 'energia/combustível', 'entretenimento', 'financeiro', 'logistica', 'serviços', 'tecnologia', 'varejo']
@@ -129,7 +129,7 @@ class _HomePageState extends State<HomePage> {
                             child: Text(value),
                           );
                         }).toList(),
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           labelText: "Insira o segmento",
                           labelStyle: TextStyle(
                             color: Colors.white,
@@ -151,7 +151,7 @@ class _HomePageState extends State<HomePage> {
                     ),
 
                     //Espaçamento
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
 
@@ -175,7 +175,7 @@ class _HomePageState extends State<HomePage> {
                                 if(_controllerNaming.text.isNotEmpty){
                                   Navigator.push(
                                       context,
-                                      MaterialPageRoute(builder: (context) => EvaluationPage(),
+                                      MaterialPageRoute(builder: (context) => const EvaluationPage(),
                                           settings: RouteSettings(
                                               arguments: {
                                                 "name": _controllerNaming.text,
@@ -186,16 +186,16 @@ class _HomePageState extends State<HomePage> {
                                   );
                                 } else{
                                   final snackBar = SnackBar(
-                                    backgroundColor: Color.fromRGBO(128, 128, 128, 1),
+                                    backgroundColor: const Color.fromRGBO(128, 128, 128, 1),
                                     content: const Text(
-                                      '!nsira os dados antes de prosseguir',
+                                      'Insira os dados antes de prosseguir',
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 15,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
-                                    duration: Duration(seconds: 3),
+                                    duration: const Duration(seconds: 3),
                                     action: SnackBarAction(
                                       label: 'OK',
                                       textColor: Colors.white,
