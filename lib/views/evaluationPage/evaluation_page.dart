@@ -17,7 +17,7 @@ class _EvaluationPageState extends State<EvaluationPage> {
   final ClientHttp _api = ClientHttp();
 
   // Função para criar o campo com o gráfico de resultado de cada critério
-  Widget evaluationCriterionChart(BuildContext context, String criterio, int nota){
+  Widget evaluationCriterionChart(BuildContext context, String criterio, int nota, String descricao){
 
     // Criando lista base para o gráfico
     List<charts.Series<int, String>> data = [
@@ -42,30 +42,75 @@ class _EvaluationPageState extends State<EvaluationPage> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Expanded(
-                child: Container(
-                  padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    criterio,
-                    style: const TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromRGBO(240, 125, 54, 1.0),
+                child: Row(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        criterio,
+                        style: const TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromRGBO(240, 125, 54, 1.0),
+                        ),
+                      ),
                     ),
-                  ),
+                    IconButton(
+                      onPressed: () {
+                        showDialog<String>(
+                          context: context,
+                          builder: (BuildContext context) => AlertDialog(
+                            title: Text(
+                              criterio,
+                              style: const TextStyle(
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromRGBO(240, 125, 54, 1.0),
+                              ),
+                            ),
+                            content: Text(
+                              descricao,
+                              style: const TextStyle(
+                                fontSize: 16,
+                                color: Color.fromRGBO(128, 128, 128, 1),
+                              ),
+                            ),
+                            actions: <Widget>[
+                              TextButton(
+                                onPressed: () => Navigator.pop(context, 'OK'),
+                                child: const Text(
+                                  'OK',
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color.fromRGBO(240, 125, 54, 1.0),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                      iconSize: 10,
+                      icon: const Icon(
+                        Mdi.informationOutline,
+                        color: Color.fromRGBO(128, 128, 128, 1),
+                        size: 20,
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              Expanded(
-                child: Container(
-                  padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
-                  alignment: Alignment.centerRight,
-                  child: Text(
-                    nota.toString(),
-                    style: const TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromRGBO(128, 128, 128, 1),
-                    ),
+              Container(
+                padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
+                alignment: Alignment.centerRight,
+                child: Text(
+                  nota.toString(),
+                  style: const TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromRGBO(128, 128, 128, 1),
                   ),
                 ),
               ),
@@ -154,8 +199,6 @@ class _EvaluationPageState extends State<EvaluationPage> {
                             ),
                           ),
                         ),
-                        //Espaçamento
-                        const SizedBox(height: 5,),
                         // Colocando o segmento do nome avaliado
                         Padding(
                           padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
@@ -191,16 +234,16 @@ class _EvaluationPageState extends State<EvaluationPage> {
                             SizedBox(height: 5,),
 
                             // Corpo com as avaliações de cada critério
-                            evaluationCriterionChart(context, "Conceito",_avaliacao["conceito"]),
-                            evaluationCriterionChart(context, "Criatividade",_avaliacao["criatividade"]),
-                            evaluationCriterionChart(context, "Grafia",_avaliacao["grafia"]),
-                            evaluationCriterionChart(context, "Memorização",_avaliacao["memorizacao"]),
-                            evaluationCriterionChart(context, "Originalidade",_avaliacao["originalidade"]),
-                            evaluationCriterionChart(context, "Popularidade",_avaliacao["popularidade"]),
-                            evaluationCriterionChart(context, "Potencial",_avaliacao["potencial"]),
-                            evaluationCriterionChart(context, "Pronuncia",_avaliacao["pronuncia"]),
-                            evaluationCriterionChart(context, "Simplicidade",_avaliacao["simplicidade"]),
-                            evaluationCriterionChart(context, "Sonoridade",_avaliacao["sonoridade"]),
+                            evaluationCriterionChart(context, "Conceito",_avaliacao["conceito"], "Critério que avalia se o conceito do nome está alinhado ou não à marca. Trata-se de um critério subjetivo."),
+                            evaluationCriterionChart(context, "Criatividade",_avaliacao["criatividade"], "Critério que avalia se o nome informado é ou não criativo."),
+                            evaluationCriterionChart(context, "Grafia",_avaliacao["grafia"], "Critério que avalia se o nome é fácil ou difícil de ser escrito."),
+                            evaluationCriterionChart(context, "Memorização",_avaliacao["memorizacao"], "Critério que avalia se o nome é fácil ou difícil de ser lembrado."),
+                            evaluationCriterionChart(context, "Originalidade",_avaliacao["originalidade"], "Critério que avalia a originalidade do nome, se é um nome já existente ou não."),
+                            evaluationCriterionChart(context, "Popularidade",_avaliacao["popularidade"], "Critério que avalia o quão popular o nome é."),
+                            evaluationCriterionChart(context, "Potencial",_avaliacao["potencial"], "Critério que avalia o potencial do nome como marca. Trata-se de um critério subjetivo."),
+                            evaluationCriterionChart(context, "Pronuncia",_avaliacao["pronuncia"], "Critério que avalia se o nome é fácil ou difícil de se pronunciar de forma correta."),
+                            evaluationCriterionChart(context, "Simplicidade",_avaliacao["simplicidade"], "Critério que avalia se o nome é simples ou complexo."),
+                            evaluationCriterionChart(context, "Sonoridade",_avaliacao["sonoridade"], "Critério que avalia se o nome soa bem ou mal."),
 
                           ],
                         ),
