@@ -13,22 +13,21 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
   String _dropdownValue = "alimentos/bebidas";
-  TextEditingController _controllerNaming = TextEditingController();
-  MaterialStateProperty<Color> _colorButton = MaterialStateProperty.all<Color>(Color.fromRGBO(128, 128, 128, .7));
+  final TextEditingController _controllerNaming = TextEditingController();
+  MaterialStateProperty<Color> _colorButton = MaterialStateProperty.all<Color>(const Color.fromRGBO(128, 128, 128, .7));
   Color _colorText = Colors.white;
-  bool _botaoHabilitado = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(240, 125, 54, 1.0),
+      backgroundColor: const Color.fromRGBO(240, 125, 54, 1.0),
 
       //Botão flutuante
       floatingActionButton: FloatingActionButton(
-        child: Icon(Mdi.help,size: 30, color: Color.fromRGBO(240, 125, 54, 1.0),),
+        child: const Icon(Mdi.help,size: 30, color: Color.fromRGBO(240, 125, 54, 1.0),),
         backgroundColor: Colors.white,
         onPressed: (){
-          Navigator.push(context, MaterialPageRoute(builder: (context) => HelpPage()));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => const HelpPage()));
         },
       ),
 
@@ -43,7 +42,7 @@ class _HomePageState extends State<HomePage> {
                 alignment: Alignment.centerLeft,
                 //color: Color.fromRGBO(240, 54, 54, 1.0), //Remover
                 height: 90,
-                padding: EdgeInsets.fromLTRB(25, 30, 10, 30),
+                padding: const EdgeInsets.fromLTRB(25, 30, 10, 30),
                 child: Image.asset("assets/images/logo_appBar.png"),
               ),
 
@@ -99,11 +98,9 @@ class _HomePageState extends State<HomePage> {
                           if(_controllerNaming.text.isEmpty){
                             _colorButton = MaterialStateProperty.all<Color>(Color.fromRGBO(128, 128, 128, .7));
                             _colorText = Colors.white;
-                            _botaoHabilitado = false;
                           }else{
                             _colorButton = MaterialStateProperty.all<Color>(Colors.white);
                             _colorText = Color.fromRGBO(240, 125, 54, 1.0);
-                            _botaoHabilitado = true;
                           }
                         });
                       },
