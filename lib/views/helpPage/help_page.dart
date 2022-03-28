@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mdi/mdi.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HelpPage extends StatefulWidget {
   const HelpPage({Key? key}) : super(key: key);
@@ -23,6 +25,18 @@ class _HelpPageState extends State<HelpPage> {
         ),
       ],
     );
+  }
+
+  Future openBrowserURL({required String url, bool inApp = false}) async{
+
+    if (await canLaunch(url)) {
+      await launch(
+        url,
+        forceSafariVC: inApp,
+        enableJavaScript: true,
+        forceWebView: inApp,
+      );
+    }
   }
 
   @override
@@ -101,11 +115,11 @@ class _HelpPageState extends State<HelpPage> {
                     ),
 
                     Container(
-                      padding: EdgeInsets.fromLTRB(25, 40, 25, 0),
+                      padding: EdgeInsets.fromLTRB(25, 40, 25, 15),
                       child: Column(
                         children: [
                           const Text(
-                            "Entre em contato conosco",
+                            "Entre em contato conosco:",
                             style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
@@ -118,16 +132,63 @@ class _HelpPageState extends State<HelpPage> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text("aa"),
+
+                              ElevatedButton(
+                                onPressed: () async {
+                                  const url = 'https://agenciabelieve.com/';
+                                  openBrowserURL(url:url, inApp: false);
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  primary: Color.fromRGBO(240, 125, 54, 1.0),
+                                  shape: CircleBorder(),
+                                  padding: EdgeInsets.all(15),
+                                ),
+                                child: Icon(
+                                  Mdi.desktopMac,
+                                  size: 35,
+                                ),
+                              ),
+
+                              SizedBox(width: 30,),
+
+                              ElevatedButton(
+                                onPressed: () async {
+                                  const url = 'https://www.instagram.com/agenciabelieve_/';
+                                  openBrowserURL(url:url, inApp: false);
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  primary: Color.fromRGBO(240, 125, 54, 1.0),
+                                  shape: CircleBorder(),
+                                  padding: EdgeInsets.all(15),
+                                ),
+                                child: Icon(
+                                  Mdi.instagram,
+                                  size: 35,
+                                ),
+                              ),
+
+                              SizedBox(width: 30,),
+
+                              ElevatedButton(
+                                onPressed: () async {
+                                  const url = 'mailto:contato@agenciabelieve.com?subject=Contato bNaming&body=Olá, vim pelo aplicativo bNaming!';
+                                  openBrowserURL(url:url, inApp: false);
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  primary: Color.fromRGBO(240, 125, 54, 1.0),
+                                  shape: CircleBorder(),
+                                  padding: EdgeInsets.all(15),
+                                ),
+                                child: Icon(
+                                  Mdi.emailOutline,
+                                  size: 35,
+                                ),
+                              ),
                             ],
                           ),
-
                         ],
                       ),
                     ),
-
-
-
                   ],
                 ),
               ),
