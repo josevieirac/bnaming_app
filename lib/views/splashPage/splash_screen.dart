@@ -14,7 +14,7 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
 
-  Map _visible = {};
+  Map _visible = {"visible":true};
 
   @override
   void initState() {
