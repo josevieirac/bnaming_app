@@ -49,6 +49,7 @@ dev_dependencies:
   http: ^0.13.0-nullsafety.0
   charts_flutter: ^0.12.0
   url_launcher: ^6.0.20
+  path_provider: ^2.0.9
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -66,6 +67,9 @@ flutter:
     - assets/images/logo.png
     - assets/images/proprietarios.png
     - assets/images/logo_appBar.png
+    - assets/images/slide_01.png
+    - assets/images/slide_02.png
+    - assets/images/slide_03.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
