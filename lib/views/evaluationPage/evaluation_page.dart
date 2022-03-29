@@ -221,7 +221,7 @@ class _EvaluationPageState extends State<EvaluationPage> {
 
                 // Configurando a lista de avaliação
                 Expanded(
-                  child:   ScrollConfiguration(
+                  child: ScrollConfiguration(
                     behavior: const ScrollBehavior(),
                     child: GlowingOverscrollIndicator(
                       axisDirection: AxisDirection.down,
