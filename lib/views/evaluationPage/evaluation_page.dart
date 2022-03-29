@@ -135,14 +135,20 @@ class _EvaluationPageState extends State<EvaluationPage> {
     );
   }
 
+  num _calcMedia(Map data){
+    var listNotas = data.values.toList();
+    num soma = 0;
+    for(int i=0; i<listNotas.length;i++){
+      soma = soma + listNotas[i];
+    }
+    return soma/listNotas.length;
+  }
+
   @override
   Widget build(BuildContext context) {
 
     _dados = ModalRoute.of(context)!.settings.arguments as Map;
-    //Future<Map> _avaliacao = _api.postAPI(_dados["name"], _dados["segment"]);
     late Map _avaliacao;
-
-    //final Future<String> _calculation = Future<String>.delayed(const Duration(seconds: 1000), () => 'Data Loaded');
 
     // Criando WIDGET para condicionar a tela entre, carregando, erro e quando tudo ocorrer bem
     return FutureBuilder(
@@ -185,30 +191,86 @@ class _EvaluationPageState extends State<EvaluationPage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Colocando o nome avaliado
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
-                        child: Text(
-                          _dados["name"],
-                          style: const TextStyle(
-                            color: Color.fromRGBO(240, 125, 54, 1.0),
-                            fontSize: 35,
-                            fontWeight: FontWeight.w900,
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                // Colocando o nome avaliado
+                                Padding(
+                                  padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                                  child: Text(
+                                    _dados["name"],
+                                    style: const TextStyle(
+                                      color: Color.fromRGBO(240, 125, 54, 1.0),
+                                      fontSize: 35,
+                                      fontWeight: FontWeight.w900,
+                                    ),
+                                  ),
+                                ),
+                                // Colocando o segmento do nome avaliado
+                                Padding(
+                                  padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                                  child: Text(
+                                    _dados["segment"],
+                                    style: const TextStyle(
+                                      color: Color.fromRGBO(128, 128, 128, 1),
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                      ),
-                      // Colocando o segmento do nome avaliado
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
-                        child: Text(
-                          _dados["segment"],
-                          style: const TextStyle(
-                            color: Color.fromRGBO(128, 128, 128, 1),
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
+
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              // Colocando o nome avaliado
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      _calcMedia(_avaliacao).toString(),
+                                      style: const TextStyle(
+                                        color: Color.fromRGBO(240, 125, 54, 1.0),
+                                        fontSize: 35,
+                                        fontWeight: FontWeight.w900,
+                                      ),
+                                    ),
+                                    const Text(
+                                      "/5",
+                                      style: TextStyle(
+                                        color: Color.fromRGBO(128, 128, 128, 1),
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              // Colocando o segmento do nome avaliado
+                              const Padding(
+                                padding: EdgeInsets.fromLTRB(00, 0, 20, 0),
+                                child: Text(
+                                  "nota média",
+                                  style: TextStyle(
+                                    color: Color.fromRGBO(128, 128, 128, 1),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                        ),
+
+
+                        ],
                       ),
+
                       //Espaçamento
                       const SizedBox(height: 10,),
 
