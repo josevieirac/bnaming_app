@@ -33,8 +33,7 @@ class _EvaluationPageState extends State<EvaluationPage> {
     ];
 
     return Container(
-      //color: Colors.blue,
-      padding: EdgeInsets.fromLTRB(25, 0, 25, 0),
+      padding: const EdgeInsets.fromLTRB(25, 0, 25, 0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -45,7 +44,7 @@ class _EvaluationPageState extends State<EvaluationPage> {
                 child: Row(
                   children: [
                     Container(
-                      padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                      padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
                       alignment: Alignment.centerLeft,
                       child: Text(
                         criterio,
@@ -103,7 +102,7 @@ class _EvaluationPageState extends State<EvaluationPage> {
                 ),
               ),
               Container(
-                padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
+                padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
                 alignment: Alignment.centerRight,
                 child: Text(
                   nota.toString(),
@@ -117,19 +116,19 @@ class _EvaluationPageState extends State<EvaluationPage> {
             ],
           ),
 
-          Container(
+          SizedBox(
             height: 70,
             child: charts.BarChart(
               data,
               animate: true,
               vertical: false,
               //charts.NumericAxisSpec(showAxisLine: false, renderSpec: charts.NoneRenderSpec()),
-              domainAxis: charts.OrdinalAxisSpec(showAxisLine: false, renderSpec: charts.NoneRenderSpec()),
-              primaryMeasureAxis: charts.NumericAxisSpec(renderSpec: charts.NoneRenderSpec()),
+              domainAxis: const charts.OrdinalAxisSpec(showAxisLine: false, renderSpec: charts.NoneRenderSpec()),
+              primaryMeasureAxis: const charts.NumericAxisSpec(renderSpec: charts.NoneRenderSpec()),
             ),
           ),
 
-          Divider(color: const Color.fromRGBO(128, 128, 128, 1),),
+          const Divider(color: Color.fromRGBO(128, 128, 128, 1),),
 
         ],
       ),
@@ -178,81 +177,79 @@ class _EvaluationPageState extends State<EvaluationPage> {
             ),
 
             // Corpo da página
-            body: Container(
-              child: Column(
-                children:  [
-                  // Configurando o cabeçalho estático da página
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(25, 25, 25, 10),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        // Colocando o nome avaliado
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
-                          child: Text(
-                            _dados["name"],
-                            style: const TextStyle(
-                              color: Color.fromRGBO(240, 125, 54, 1.0),
-                              fontSize: 35,
-                              fontWeight: FontWeight.w900,
-                            ),
+            body: Column(
+              children:  [
+                // Configurando o cabeçalho estático da página
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(25, 25, 25, 10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Colocando o nome avaliado
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                        child: Text(
+                          _dados["name"],
+                          style: const TextStyle(
+                            color: Color.fromRGBO(240, 125, 54, 1.0),
+                            fontSize: 35,
+                            fontWeight: FontWeight.w900,
                           ),
                         ),
-                        // Colocando o segmento do nome avaliado
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
-                          child: Text(
-                            _dados["segment"],
-                            style: const TextStyle(
-                              color: Color.fromRGBO(128, 128, 128, 1),
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                            ),
+                      ),
+                      // Colocando o segmento do nome avaliado
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                        child: Text(
+                          _dados["segment"],
+                          style: const TextStyle(
+                            color: Color.fromRGBO(128, 128, 128, 1),
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
-                        //Espaçamento
-                        const SizedBox(height: 10,),
+                      ),
+                      //Espaçamento
+                      const SizedBox(height: 10,),
 
-                        const Divider(
-                          color: Color.fromRGBO(128, 128, 128, 1),
-                        ),
-                      ],
-                    ),
+                      const Divider(
+                        color: Color.fromRGBO(128, 128, 128, 1),
+                      ),
+                    ],
                   ),
+                ),
 
-                  // Configurando a lista de avaliação
-                  Expanded(
-                    child:   ScrollConfiguration(
-                      behavior: const ScrollBehavior(),
-                      child: GlowingOverscrollIndicator(
-                        axisDirection: AxisDirection.down,
-                        color: const Color.fromRGBO(128, 128, 128, 1),
-                        child: ListView(
-                          children: [
+                // Configurando a lista de avaliação
+                Expanded(
+                  child:   ScrollConfiguration(
+                    behavior: const ScrollBehavior(),
+                    child: GlowingOverscrollIndicator(
+                      axisDirection: AxisDirection.down,
+                      color: const Color.fromRGBO(128, 128, 128, 1),
+                      child: ListView(
+                        children: [
 
-                            SizedBox(height: 5,),
+                          const SizedBox(height: 5,),
 
-                            // Corpo com as avaliações de cada critério
-                            evaluationCriterionChart(context, "Conceito",_avaliacao["conceito"], "Critério que avalia se o conceito do nome está alinhado ou não à marca. Trata-se de um critério subjetivo."),
-                            evaluationCriterionChart(context, "Criatividade",_avaliacao["criatividade"], "Critério que avalia se o nome informado é ou não criativo."),
-                            evaluationCriterionChart(context, "Grafia",_avaliacao["grafia"], "Critério que avalia se o nome é fácil ou difícil de ser escrito."),
-                            evaluationCriterionChart(context, "Memorização",_avaliacao["memorizacao"], "Critério que avalia se o nome é fácil ou difícil de ser lembrado."),
-                            evaluationCriterionChart(context, "Originalidade",_avaliacao["originalidade"], "Critério que avalia a originalidade do nome, se é um nome já existente ou não."),
-                            evaluationCriterionChart(context, "Popularidade",_avaliacao["popularidade"], "Critério que avalia o quão popular o nome é."),
-                            evaluationCriterionChart(context, "Potencial",_avaliacao["potencial"], "Critério que avalia o potencial do nome como marca. Trata-se de um critério subjetivo."),
-                            evaluationCriterionChart(context, "Pronuncia",_avaliacao["pronuncia"], "Critério que avalia se o nome é fácil ou difícil de se pronunciar de forma correta."),
-                            evaluationCriterionChart(context, "Simplicidade",_avaliacao["simplicidade"], "Critério que avalia se o nome é simples ou complexo."),
-                            evaluationCriterionChart(context, "Sonoridade",_avaliacao["sonoridade"], "Critério que avalia se o nome soa bem ou mal."),
+                          // Corpo com as avaliações de cada critério
+                          evaluationCriterionChart(context, "Conceito",_avaliacao["conceito"], "Critério que avalia se o conceito do nome está alinhado ou não à marca. Trata-se de um critério subjetivo."),
+                          evaluationCriterionChart(context, "Criatividade",_avaliacao["criatividade"], "Critério que avalia se o nome informado é ou não criativo."),
+                          evaluationCriterionChart(context, "Grafia",_avaliacao["grafia"], "Critério que avalia se o nome é fácil ou difícil de ser escrito."),
+                          evaluationCriterionChart(context, "Memorização",_avaliacao["memorizacao"], "Critério que avalia se o nome é fácil ou difícil de ser lembrado."),
+                          evaluationCriterionChart(context, "Originalidade",_avaliacao["originalidade"], "Critério que avalia a originalidade do nome, se é um nome já existente ou não."),
+                          evaluationCriterionChart(context, "Popularidade",_avaliacao["popularidade"], "Critério que avalia o quão popular o nome é."),
+                          evaluationCriterionChart(context, "Potencial",_avaliacao["potencial"], "Critério que avalia o potencial do nome como marca. Trata-se de um critério subjetivo."),
+                          evaluationCriterionChart(context, "Pronuncia",_avaliacao["pronuncia"], "Critério que avalia se o nome é fácil ou difícil de se pronunciar de forma correta."),
+                          evaluationCriterionChart(context, "Simplicidade",_avaliacao["simplicidade"], "Critério que avalia se o nome é simples ou complexo."),
+                          evaluationCriterionChart(context, "Sonoridade",_avaliacao["sonoridade"], "Critério que avalia se o nome soa bem ou mal."),
 
-                          ],
-                        ),
+                        ],
                       ),
                     ),
                   ),
+                ),
 
-                ],
-              )
+              ],
             ),
           );
 
