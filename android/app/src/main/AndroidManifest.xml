@@ -19,7 +19,7 @@
         </intent>
     </queries>
    <application
-        android:label="bnaming_app"
+        android:label="bNaming"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         android:usesCleartextTraffic="true">

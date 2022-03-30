@@ -1,8 +1,5 @@
-
-
 import 'package:bnaming_app/views/splashPage/splash_screen.dart';
 import 'package:flutter/material.dart';
-
 import 'http/client.dart';
 
 //Função Inicial do APP
