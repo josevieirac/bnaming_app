@@ -1,8 +1,9 @@
+import 'package:bnaming_app/model/Historico.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:mdi/mdi.dart';
+import 'package:provider/provider.dart';
+
+import '../../Repository/HistoryRepository.dart';
+import '../Card/HistoryCard.dart';
 
 class historyPage extends StatefulWidget {
   const historyPage({Key? key}) : super(key: key);
@@ -12,6 +13,8 @@ class historyPage extends StatefulWidget {
 }
 
 class _historyPageState extends State<historyPage> {
+  List<History> historyList=[];
+
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -30,17 +33,27 @@ class _historyPageState extends State<historyPage> {
      color:  const Color.fromRGBO(240, 125, 54, 1.0).withOpacity(0.7),
       height: MediaQuery.of(context).size.height,
       padding: const EdgeInsets.all(12.0),
-      child: const ListTile(
-        leading: Icon(Mdi.history,size: 20, color: Color.fromRGBO(255, 255, 255, 1.0)),
-        title: Text("Histórico vazio",
-        style: TextStyle(
-                    fontSize: 16,
-                    color: Color.fromRGBO(255, 255, 255, 1.0),
-                    fontWeight: FontWeight.w500,
-                  ),
+      child: 
+      Consumer<HistoryRepository>(
+          builder: (context,historyList,child ) {
+            return historyList.Lista.isEmpty
+            ?const ListTile(
+              leading: Icon(Icons.history),
+              title: Text("Você ainda não está cursando nenhuma disciplina"),
+            )
+            : ListView.builder( 
+              itemCount: historyList.Lista.length,
+              itemBuilder: (_,index){
+                return HistoryCard(history: historyList.Lista[index]);
+              },
+              
+              
+              );
+          }
+          ) ,
         ),
-    ),
-    )
     );
+    
+    
   }
 }

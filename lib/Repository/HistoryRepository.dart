@@ -4,7 +4,7 @@ import 'package:bnaming_app/model/Historico.dart';
 import 'package:flutter/cupertino.dart';
 
 
-class CursandoRepository extends ChangeNotifier{
+class HistoryRepository extends ChangeNotifier{
   List<History> _list=[];
 
 
