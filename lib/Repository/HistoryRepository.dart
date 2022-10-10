@@ -5,23 +5,21 @@ import 'package:flutter/cupertino.dart';
 
 
 class CursandoRepository extends ChangeNotifier{
-  List<Historico> _list=[];
+  List<History> _list=[];
 
 
 
-  UnmodifiableListView<Historico> get Lista => UnmodifiableListView(_list);
+  UnmodifiableListView<History> get Lista => UnmodifiableListView(_list);
 
-  saveAll(List<Historico> disciplinas){
-    disciplinas.forEach((disciplina) { 
-        if(!_list.contains(disciplina)) _list.add(disciplina);
+  saveAll(List<History> historyList){
+    historyList.forEach((history) { 
+        if(!_list.contains(history)) _list.add(history);
     });
     notifyListeners();
   }
   
-
-
-  remove(Historico disciplina){
-    _list.remove(disciplina);
+  remove(History history){
+    _list.remove(history);
     notifyListeners();
   }
 }

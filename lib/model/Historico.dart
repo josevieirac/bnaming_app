@@ -1,8 +1,8 @@
-class Historico{
+class History{
   String name;
   String segment;
 
-  Historico({
+  History({
     required this.name,
     required this.segment,
 
