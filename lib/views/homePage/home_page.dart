@@ -1,5 +1,6 @@
 import 'package:bnaming_app/views/evaluationPage/evaluation_page.dart';
 import 'package:bnaming_app/views/helpPage/help_page.dart';
+import 'package:bnaming_app/views/historyPage/historyPage.dart';
 import 'package:flutter/material.dart';
 import 'package:mdi/mdi.dart';
 
@@ -22,15 +23,34 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: const Color.fromRGBO(240, 125, 54, 1.0),
 
+      
+
       //Botão flutuante
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Mdi.help,size: 30, color: Color.fromRGBO(240, 125, 54, 1.0),),
-        backgroundColor: Colors.white,
-        onPressed: (){
-          Navigator.push(context, MaterialPageRoute(builder: (context) => const HelpPage()));
-        },
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(left: 30),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            FloatingActionButton(
+              child: const Icon(Mdi.help,size: 30, color: Color.fromRGBO(240, 125, 54, 1.0),),
+              backgroundColor: Colors.white,
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const HelpPage()));
+              },
+            ),
+            Expanded(child: Container()),
+            FloatingActionButton(
+              child: const Icon(Mdi.history,size: 30, color: Color.fromRGBO(240, 125, 54, 1.0),),
+              backgroundColor: Colors.white,
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const historyPage()));
+              },
+            ), 
+          ],
+        ),
       ),
 
+      
       // Corpo da Página
       body: ListView(
         children: [
@@ -208,8 +228,10 @@ class _HomePageState extends State<HomePage> {
                                 }
                               },
                             ),
-                        )
+                        ),
+                           
                       ],
+                      
                     ),
                   ],
                 ),
@@ -218,6 +240,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       )
+      
     );
   }
 }
