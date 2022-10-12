@@ -55,16 +55,21 @@ class _HistoryCardState extends State<HistoryCard> {
                           title:
                           Text(widget.history.name, 
                           style: const TextStyle(
-                            fontSize: 17,
+                            fontSize: 25,
                             fontWeight: FontWeight.w500,
-                            color: Colors.blue
+                            color: Color.fromRGBO(240, 125, 54, 1.0)
                     
                           ),
                             ),
                         
-                        subtitle: Text("Segmento: ${widget.history.segment}" ),
+                        subtitle: Text("Segmento: ${widget.history.segment}",
+                        style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.black,
                         )
-
+                        )
+                        )
                     ]
                     ),
                     

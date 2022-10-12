@@ -4,6 +4,7 @@ import 'package:bnaming_app/views/helpPage/help_page.dart';
 import 'package:bnaming_app/views/historyPage/historyPage.dart';
 import 'package:flutter/material.dart';
 import 'package:mdi/mdi.dart';
+import 'package:provider/provider.dart';
 
 import '../../Repository/HistoryRepository.dart';
 
@@ -16,7 +17,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  
+    // ignore: non_constant_identifier_names
+    late HistoryRepository historico;
 
   String _dropdownValue = "alimentos/bebidas";
   final TextEditingController _controllerNaming = TextEditingController();
@@ -25,6 +27,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    historico = Provider.of<HistoryRepository>(context);
     return Scaffold(
       backgroundColor: const Color.fromRGBO(240, 125, 54, 1.0),
 
@@ -199,7 +202,8 @@ class _HomePageState extends State<HomePage> {
                                 backgroundColor: _colorButton,
                               ),
                               onPressed: (){
-
+                                History history = History(name:_controllerNaming.text , segment:_dropdownValue );
+                                historico.saveAll(history);
                                 if(_controllerNaming.text.isNotEmpty){
                                   Navigator.push(
                                       context,
