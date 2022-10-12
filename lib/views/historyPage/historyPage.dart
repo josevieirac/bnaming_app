@@ -39,16 +39,18 @@ class _historyPageState extends State<historyPage> {
             return historyList.Lista.isEmpty
             ?const ListTile(
               leading: Icon(Icons.history),
-              title: Text("Você ainda não está cursando nenhuma disciplina"),
+              title: Text("historico vazio"),
             )
-            : ListView.builder( 
-              itemCount: historyList.Lista.length,
-              itemBuilder: (_,index){
-                return HistoryCard(history: historyList.Lista[index]);
-              },
-              
-              
-              );
+            : SizedBox(
+              child: ListView.builder( 
+                itemCount: historyList.Lista.length,
+                itemBuilder: (_,index){
+                  return HistoryCard(history: historyList.Lista[index]);
+                },
+                
+                
+                ),
+            );
           }
           ) ,
         ),

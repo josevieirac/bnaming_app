@@ -1,5 +1,7 @@
 import 'package:bnaming_app/views/splashPage/splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'Repository/HistoryRepository.dart';
 import 'http/client.dart';
 
 //Função Inicial do APP
@@ -9,7 +11,13 @@ void main() {
   ClientHttp classe = ClientHttp();
   classe.getAPI();
 
-  runApp(const MyApp());
+  runApp(
+    
+  ChangeNotifierProvider(
+    create:(context)=> HistoryRepository(),
+    child: MyApp()
+  ),
+  );
 }
 
 class MyApp extends StatelessWidget {

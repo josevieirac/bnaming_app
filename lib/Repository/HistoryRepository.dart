@@ -11,10 +11,10 @@ class HistoryRepository extends ChangeNotifier{
 
   UnmodifiableListView<History> get Lista => UnmodifiableListView(_list);
 
-  saveAll(List<History> historyList){
-    historyList.forEach((history) { 
-        if(!_list.contains(history)) _list.add(history);
-    });
+  saveAll(History history){
+    
+    if(!_list.contains(history)) _list.add(history);
+    
     notifyListeners();
   }
   

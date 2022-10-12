@@ -1,8 +1,11 @@
+import 'package:bnaming_app/model/Historico.dart';
 import 'package:bnaming_app/views/evaluationPage/evaluation_page.dart';
 import 'package:bnaming_app/views/helpPage/help_page.dart';
 import 'package:bnaming_app/views/historyPage/historyPage.dart';
 import 'package:flutter/material.dart';
 import 'package:mdi/mdi.dart';
+
+import '../../Repository/HistoryRepository.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -12,6 +15,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  
 
   String _dropdownValue = "alimentos/bebidas";
   final TextEditingController _controllerNaming = TextEditingController();
@@ -32,6 +37,7 @@ class _HomePageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             FloatingActionButton(
+              heroTag: 'next1',
               child: const Icon(Mdi.help,size: 30, color: Color.fromRGBO(240, 125, 54, 1.0),),
               backgroundColor: Colors.white,
               onPressed: (){
@@ -40,6 +46,7 @@ class _HomePageState extends State<HomePage> {
             ),
             Expanded(child: Container()),
             FloatingActionButton(
+              heroTag: 'next2',
               child: const Icon(Mdi.history,size: 30, color: Color.fromRGBO(240, 125, 54, 1.0),),
               backgroundColor: Colors.white,
               onPressed: (){
@@ -192,6 +199,7 @@ class _HomePageState extends State<HomePage> {
                                 backgroundColor: _colorButton,
                               ),
                               onPressed: (){
+
                                 if(_controllerNaming.text.isNotEmpty){
                                   Navigator.push(
                                       context,
