@@ -22,4 +22,7 @@ class HistoryRepository extends ChangeNotifier{
     _list.remove(history);
     notifyListeners();
   }
+  invert(){
+    _list = _list.reversed.toList();
+  }
 }

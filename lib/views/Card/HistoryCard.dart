@@ -81,7 +81,7 @@ class _HistoryCardState extends State<HistoryCard> {
                   icon: const Icon(Icons.more_vert),
                   itemBuilder: (context) =>[
                     PopupMenuItem(child: ListTile(
-                      title: const Text("remover disciplina"),
+                      title: const Text("remover Histórico"),
                       onTap: (){
                         Navigator.pop(context);
                         Provider.of<HistoryRepository>(context,listen: false).remove(widget.history);

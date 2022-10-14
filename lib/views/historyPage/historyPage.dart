@@ -43,8 +43,10 @@ class _historyPageState extends State<historyPage> {
             )
             : SizedBox(
               child: ListView.builder( 
+                
                 itemCount: historyList.Lista.length,
                 itemBuilder: (_,index){
+                  historyList.invert();
                   return HistoryCard(history: historyList.Lista[index]);
                 },
                 
