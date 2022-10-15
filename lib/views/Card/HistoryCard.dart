@@ -36,7 +36,19 @@ class _HistoryCardState extends State<HistoryCard> {
   
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return Card (
+      shape: RoundedRectangleBorder(
+        side: const BorderSide(
+          color: Colors.white,
+          width: 5,
+          
+          ),
+        borderRadius: BorderRadius.circular(15.0)
+      ),
+        
+        color: const Color.fromRGBO(240, 125, 54, 1.0),
+      
+      
       margin: const EdgeInsets.only(top: 12),
       elevation: 2,
       child: InkWell(
@@ -57,7 +69,7 @@ class _HistoryCardState extends State<HistoryCard> {
                           style: const TextStyle(
                             fontSize: 25,
                             fontWeight: FontWeight.w500,
-                            color: Color.fromRGBO(240, 125, 54, 1.0)
+                            color: Colors.white
                     
                           ),
                             ),
@@ -66,7 +78,7 @@ class _HistoryCardState extends State<HistoryCard> {
                         style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w400,
-                            color: Colors.black,
+                            color: Colors.white,
                         )
                         )
                         )
@@ -78,7 +90,8 @@ class _HistoryCardState extends State<HistoryCard> {
                 
                 ),
                 PopupMenuButton(
-                  icon: const Icon(Icons.more_vert),
+                  color:  Colors.white,
+                  icon: const Icon(Icons.more_vert,color:  Colors.white,),
                   itemBuilder: (context) =>[
                     PopupMenuItem(child: ListTile(
                       title: const Text("remover Histórico"),
