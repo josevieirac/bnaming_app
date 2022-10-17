@@ -25,4 +25,14 @@ class HistoryRepository extends ChangeNotifier{
   invert(){
     _list = _list.reversed.toList();
   }
+
+  int tamanho() {
+    int tam =_list.length;
+    if(tam<20){
+        return tam;
+    }else{
+        return 20;
+    }
+            
+    }
 }

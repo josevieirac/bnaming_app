@@ -15,6 +15,7 @@ class historyPage extends StatefulWidget {
 class _historyPageState extends State<historyPage> {
   List<History> historyList=[];
 
+
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -35,18 +36,21 @@ class _historyPageState extends State<historyPage> {
       padding: const EdgeInsets.all(12.0),
       child: 
       Consumer<HistoryRepository>(
+        
           builder: (context,historyList,child ) {
+
             return historyList.Lista.isEmpty
             ?const ListTile(
               leading: Icon(Icons.history),
               title: Text("historico vazio"),
             )
             : SizedBox(
+              
               child: ListView.builder( 
                 
-                itemCount: historyList.Lista.length,
+                itemCount: historyList.tamanho(),
                 itemBuilder: (_,index){
-                  historyList.invert();
+                  
                   return HistoryCard(history: historyList.Lista[index]);
                 },
                 
