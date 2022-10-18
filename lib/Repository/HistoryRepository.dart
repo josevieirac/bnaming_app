@@ -1,7 +1,9 @@
 import 'dart:collection';
+import 'dart:convert';
 
 import 'package:bnaming_app/model/Historico.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 class HistoryRepository extends ChangeNotifier{
@@ -11,19 +13,18 @@ class HistoryRepository extends ChangeNotifier{
 
   UnmodifiableListView<History> get Lista => UnmodifiableListView(_list);
 
-  saveAll(History history){
+  saveAll(History history) async{
     
-    if(!_list.contains(history)) _list.add(history);
-    
+    if(!_list.contains(history)) _list.insert(0, history);
+
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    preferences.setString("history",json.encode(history.toJson()));
     notifyListeners();
   }
   
   remove(History history){
     _list.remove(history);
     notifyListeners();
-  }
-  invert(){
-    _list = _list.reversed.toList();
   }
 
   int tamanho() {

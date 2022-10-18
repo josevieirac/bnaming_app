@@ -14,10 +14,11 @@ class historyPage extends StatefulWidget {
 
 class _historyPageState extends State<historyPage> {
   List<History> historyList=[];
-
+  
 
   @override
   Widget build(BuildContext context) {
+    
     return  Scaffold(
                  appBar: AppBar(
               title: const Text(
@@ -38,6 +39,7 @@ class _historyPageState extends State<historyPage> {
       Consumer<HistoryRepository>(
         
           builder: (context,historyList,child ) {
+            
 
             return historyList.Lista.isEmpty
             ?const ListTile(
