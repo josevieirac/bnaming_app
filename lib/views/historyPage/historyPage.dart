@@ -39,8 +39,6 @@ class _historyPageState extends State<historyPage> {
       Consumer<HistoryRepository>(
         
           builder: (context,historyList,child ) {
-            
-
             return historyList.Lista.isEmpty
             ?const ListTile(
               leading: Icon(Icons.history),

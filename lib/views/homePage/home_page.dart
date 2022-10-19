@@ -19,6 +19,7 @@ class _HomePageState extends State<HomePage> {
 
     // ignore: non_constant_identifier_names
     late HistoryRepository historico;
+    
 
   String _dropdownValue = "alimentos/bebidas";
   final TextEditingController _controllerNaming = TextEditingController();
@@ -27,7 +28,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    historico = Provider.of<HistoryRepository>(context);
+    historico = context.watch<HistoryRepository>();
+    historico.getAll();
     return Scaffold(
       backgroundColor: const Color.fromRGBO(240, 125, 54, 1.0),
 
