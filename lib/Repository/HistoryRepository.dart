@@ -18,11 +18,16 @@ class HistoryRepository extends ChangeNotifier{
   saveAll(History history) async{
     
     if(!conferir.contains(history.name)){
-       _list.insert(0, history);
-       conferir.insert(0, history.name);
-       SharedPreferences preferences = await SharedPreferences.getInstance();
-       salvar.add(json.encode(history.toJson()));
-       
+      if(_list.length<20){
+        _list.insert(0, history);
+        conferir.insert(0, history.name);
+
+      }else{
+        remove(_list[_list.length-1]);
+        _list.insert(0, history);
+        conferir.insert(0, history.name);
+      }
+      salvar.add(json.encode(history.toJson()));  
     }
     notifyListeners();
   }
@@ -47,15 +52,16 @@ class HistoryRepository extends ChangeNotifier{
     _list.remove(history);
     conferir.remove(history.name);
     salvar.remove(json.encode(history.toJson()));
+    setAll();
     notifyListeners();
   }
 
   int tamanho() {
     int tam =_list.length;
-    if(tam<20){
+    if(tam<10){
         return tam;
     }else{
-        return 20;
+        return 10;
     }
             
     }

@@ -30,6 +30,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     historico = context.watch<HistoryRepository>();
     historico.getAll();
+    historico.setAll();
     return Scaffold(
       backgroundColor: const Color.fromRGBO(240, 125, 54, 1.0),
 
