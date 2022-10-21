@@ -189,8 +189,10 @@ class _EvaluationPageState extends State<EvaluationPage> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(25, 25, 25, 10),
                   child: Column(
+                    
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      
                       Row(
                         children: [
                           Expanded(

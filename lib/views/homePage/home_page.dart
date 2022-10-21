@@ -1,7 +1,9 @@
 import 'package:bnaming_app/model/Historico.dart';
+import 'package:bnaming_app/model/alert.dart';
 import 'package:bnaming_app/views/evaluationPage/evaluation_page.dart';
 import 'package:bnaming_app/views/helpPage/help_page.dart';
 import 'package:bnaming_app/views/historyPage/historyPage.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mdi/mdi.dart';
 import 'package:provider/provider.dart';
@@ -20,7 +22,7 @@ class _HomePageState extends State<HomePage> {
     // ignore: non_constant_identifier_names
     late HistoryRepository historico;
     
-
+  Alert alert = Alert(mensagem: "");
   String _dropdownValue = "alimentos/bebidas";
   final TextEditingController _controllerNaming = TextEditingController();
   MaterialStateProperty<Color> _colorButton = MaterialStateProperty.all<Color>(const Color.fromRGBO(128, 128, 128, 1));
@@ -31,6 +33,7 @@ class _HomePageState extends State<HomePage> {
     historico = context.watch<HistoryRepository>();
     historico.getAll();
     historico.setAll();
+    bool registrado=true;
     return Scaffold(
       backgroundColor: const Color.fromRGBO(240, 125, 54, 1.0),
 
@@ -205,6 +208,10 @@ class _HomePageState extends State<HomePage> {
                                 backgroundColor: _colorButton,
                               ),
                               onPressed: (){
+                                if(registrado){
+                                    alert.snackBar1(context); 
+                                  
+                                } 
                                 History history = History(name:_controllerNaming.text , segment:_dropdownValue );
                                 historico.saveAll(history);
                                 if(_controllerNaming.text.isNotEmpty){
@@ -220,29 +227,11 @@ class _HomePageState extends State<HomePage> {
                                       )
                                   );
                                 } else{
-                                  final snackBar = SnackBar(
-                                    backgroundColor: const Color.fromRGBO(128, 128, 128, 1),
-                                    content: const Text(
-                                      'Insira os dados antes de prosseguir',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    duration: const Duration(seconds: 3),
-                                    action: SnackBarAction(
-                                      label: 'OK',
-                                      textColor: Colors.white,
-                                      onPressed: () {
-                                        // Some code to undo the change.
-                                      },
-                                    ),
-                                  );
-                                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                                  alert.snackBar2(context);
                                 }
-                              },
-                            ),
+                              
+                              }
+                            )
                         ),
                            
                       ],
@@ -257,5 +246,9 @@ class _HomePageState extends State<HomePage> {
       )
       
     );
+
+
+
   }
+     
 }
