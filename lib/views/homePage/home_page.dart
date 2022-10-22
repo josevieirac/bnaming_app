@@ -3,7 +3,6 @@ import 'package:bnaming_app/model/alert.dart';
 import 'package:bnaming_app/views/evaluationPage/evaluation_page.dart';
 import 'package:bnaming_app/views/helpPage/help_page.dart';
 import 'package:bnaming_app/views/historyPage/historyPage.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mdi/mdi.dart';
 import 'package:provider/provider.dart';
@@ -22,7 +21,7 @@ class _HomePageState extends State<HomePage> {
     // ignore: non_constant_identifier_names
     late HistoryRepository historico;
     
-  Alert alert = Alert(mensagem: "");
+  Alert alert=Alert();
   String _dropdownValue = "alimentos/bebidas";
   final TextEditingController _controllerNaming = TextEditingController();
   MaterialStateProperty<Color> _colorButton = MaterialStateProperty.all<Color>(const Color.fromRGBO(128, 128, 128, 1));

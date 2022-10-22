@@ -4,16 +4,7 @@ class Alert{
    late String mensagem;
    late bool continuar=false;
 
-    Alert({
-      
-      required this.mensagem
-    
-  });
 
-  Alert alerta1(){
-    Alert alerta1 = Alert(mensagem: "Nome já registrado");
-    return alerta1;
-  }
 
   snackBar1(BuildContext context){
 
@@ -62,6 +53,30 @@ class Alert{
       );
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
+
+  snackBar3(BuildContext context){
+    final snackBar = SnackBar(
+        backgroundColor: const Color.fromRGBO(128, 128, 128, 1),
+        content: const Text(
+        'Role até a última página',
+        style: TextStyle(
+        color: Colors.white,
+        fontSize: 15,
+        fontWeight: FontWeight.bold,
+        ),
+        ),
+        duration: const Duration(seconds: 3),
+        action: SnackBarAction(
+        label: 'OK',
+        textColor: Colors.white,
+        onPressed: () {
+        // Some code to undo the change.
+        },
+        ),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
 }
 
 

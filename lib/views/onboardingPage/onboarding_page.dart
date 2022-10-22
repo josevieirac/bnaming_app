@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:bnaming_app/model/alert.dart';
 import 'package:bnaming_app/views/homePage/home_page.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/material.dart';
@@ -117,26 +118,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
                       if(_currentPage == 2){
                         Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const HomePage()));
                       }else{
-                        final snackBar = SnackBar(
-                          backgroundColor: const Color.fromRGBO(128, 128, 128, 1),
-                          content: const Text(
-                            'Role até a última página',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          duration: const Duration(seconds: 3),
-                          action: SnackBarAction(
-                            label: 'OK',
-                            textColor: Colors.white,
-                            onPressed: () {
-                              // Some code to undo the change.
-                            },
-                          ),
-                        );
-                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        Alert alerta= Alert();
+                        alerta.snackBar3(context);
                       }
                     },
                   ),
