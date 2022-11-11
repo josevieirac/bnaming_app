@@ -1,4 +1,5 @@
 
+import 'package:bnaming_app/http/RegistroBR.dart';
 import 'package:bnaming_app/views/splashPage/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -11,6 +12,8 @@ Future<void> main() async {
   //Requisitando inicialmente a API para
   ClientHttp classe = ClientHttp();
   classe.getAPI();
+  final RBR _api = RBR();
+  _api.getAPI('');
 
   runApp(
     

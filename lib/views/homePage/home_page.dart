@@ -1,3 +1,4 @@
+import 'package:bnaming_app/http/RegistroBR.dart';
 import 'package:bnaming_app/model/Historico.dart';
 import 'package:bnaming_app/model/alert.dart';
 import 'package:bnaming_app/views/evaluationPage/evaluation_page.dart';
@@ -20,6 +21,7 @@ class _HomePageState extends State<HomePage> {
 
     // ignore: non_constant_identifier_names
     late HistoryRepository historico;
+
     
   Alert alert=Alert();
   String _dropdownValue = "alimentos/bebidas";
@@ -33,6 +35,7 @@ class _HomePageState extends State<HomePage> {
     historico.getAll();
     historico.setAll();
     bool registrado=false;
+    final RBR _api = RBR();
     return Scaffold(
       backgroundColor: const Color.fromRGBO(240, 125, 54, 1.0),
 
@@ -206,10 +209,12 @@ class _HomePageState extends State<HomePage> {
                               style: ButtonStyle(
                                 backgroundColor: _colorButton,
                               ),
-                              onPressed: (){
-                                if(registrado){
-                                    alert.snackBar1(context); 
-                                  
+                              onPressed: () async {
+                                 var  registrado =_api.getAPI(_controllerNaming.text);
+                                 bool registro = await registrado;
+                                
+                                if(registro){
+                                    alert.snackBar1(context);  
                                 } 
                                 History history = History(name:_controllerNaming.text , segment:_dropdownValue );
                                 historico.saveAll(history);
